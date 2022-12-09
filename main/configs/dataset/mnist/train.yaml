@@ -1,0 +1,40 @@
+# VAE config used for VAE training and inference
+data:
+  root: ???
+  name: "mnist"
+  image_size: 32
+  in_channels: 1
+  hflip: True
+
+model:
+  code_size: 16
+  encoder:
+    base_ch: 64
+    channel_mults: [1,2,2,2,2]
+
+training:
+  seed: 0
+  fp16: False
+  batch_size: 128
+  epochs: 1000
+  log_step: 1
+  device: "gpu:0"
+  chkpt_interval: 1
+  optimizer: "Adam"
+  lr: 1e-4
+  restore_path: ""
+  results_dir: ???
+  workers: 2
+  chkpt_prefix: ""
+  beta: 1.0
+
+inference:
+  chkpt_path: ???
+  seed: 0
+  device: "gpu:0"
+  n_samples: -1
+  save_path: ???
+  write_mode: "image"
+  denorm: False
+  inter_dim: 0
+  n_interpolations: 10
